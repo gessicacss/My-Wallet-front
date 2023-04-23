@@ -75,6 +75,7 @@ export default function SignUpPage() {
           value={form.password}
           disabled={loading}
           onChange={handleForm}
+          minLength={3}
         />
         <input
           name="confirmPassword"
@@ -84,6 +85,7 @@ export default function SignUpPage() {
           value={form.confirmPassword}
           disabled={loading}
           onChange={handleForm}
+          minLength={3}
         />
         <button disabled={loading}>
           {loading ? (
