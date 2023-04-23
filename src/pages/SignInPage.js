@@ -23,6 +23,7 @@ export default function SignInPage() {
         navigate("/home");
       })
       .catch((err) => {
+        console.log(err.response.status)
         if(err.response.status === 404){
           return alert("E-mail não cadastrado")
         } else if (err.response.status === 401){
@@ -40,6 +41,7 @@ export default function SignInPage() {
         <input
           type="email"
           value={email}
+          required
           disabled={loading}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="email"
@@ -47,6 +49,7 @@ export default function SignInPage() {
         <input
           type="password"
           value={password}
+          required
           disabled={loading}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="senha"
@@ -57,14 +60,7 @@ export default function SignInPage() {
               <ThreeDots
                 height="25"
                 width="70"
-                align="center"
-                radius="9"
                 color="#fff"
-                background-color="none"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
               />
             </span>
           ) : (
