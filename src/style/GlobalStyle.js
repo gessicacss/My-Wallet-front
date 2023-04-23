@@ -44,6 +44,10 @@ const GlobalStyle = createGlobalStyle`
         gap: 15px;
         width: 100%;
         border-radius: 5px;
+        span {
+            display: flex;
+            justify-content: center;
+        }
     }
     a {
         font-weight: 700;
@@ -53,6 +57,6 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         padding-top: 30px;
     }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
