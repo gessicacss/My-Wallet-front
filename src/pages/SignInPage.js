@@ -17,7 +17,7 @@ export default function SignInPage() {
     console.log(loading);
     const body = { email, password };
     axios
-      .post(`${process.env.REACT_APP_API_URL}sign-in`, body)
+      .post(`${process.env.REACT_APP_API_URL}/sign-in`, body)
       .then((res) => {
         console.log(res.data);
         navigate("/home");
