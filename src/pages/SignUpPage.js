@@ -23,6 +23,7 @@ export default function SignUpPage() {
     setLoading(true);
     e.preventDefault();
     if (form.password !== form.confirmPassword) {
+      setLoading(false);
       return alert("As senhas precisam ser iguais!");
     }
     const body = {
