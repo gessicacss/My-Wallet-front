@@ -27,7 +27,6 @@ export default function SignInPage() {
         navigate("/home");
       })
       .catch((err) => {
-        console.log(err.response.status)
         if(err.response.status === 404){
           return alert("E-mail não cadastrado")
         } else if (err.response.status === 401){
