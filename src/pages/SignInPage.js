@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import MyWalletLogo from "../components/MyWalletLogo";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
 
 export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   function signinUser(e) {
@@ -19,7 +21,9 @@ export default function SignInPage() {
     axios
       .post(`${process.env.REACT_APP_API_URL}/sign-in`, body)
       .then((res) => {
-        console.log(res.data);
+        const { token, name} = res.data;
+        localStorage.setItem("user", JSON.stringify({token, name}))
+        setUser(res.data);
         navigate("/home");
       })
       .catch((err) => {

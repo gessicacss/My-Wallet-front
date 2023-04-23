@@ -1,13 +1,25 @@
 import styled from "styled-components"
 import { BiExit } from "react-icons/bi"
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai"
+import { useContext } from "react"
+import { UserContext } from "../contexts/UserContext"
+import { useNavigate } from "react-router-dom"
 
 export default function HomePage() {
+  const {user, setUser} = useContext(UserContext);
+  const navigate = useNavigate();
+
+  function handleLogOut(){
+    localStorage.removeItem('user');
+    setUser({});
+    navigate('/');
+  }
+
   return (
     <HomeContainer>
       <Header>
-        <h1>Olá, Fulano</h1>
-        <BiExit />
+        <h1>Olá, {user.name}</h1>
+        <BiExit style={{cursor:"pointer"}} onClick={handleLogOut}/>
       </Header>
 
       <TransactionsContainer>
@@ -37,11 +49,11 @@ export default function HomePage() {
 
 
       <ButtonsContainer>
-        <button>
+        <button onClick={() => navigate('/nova-transacao/entrada')}>
           <AiOutlinePlusCircle />
           <p>Nova <br /> entrada</p>
         </button>
-        <button>
+        <button onClick={() => navigate('/nova-transacao/saida')}>
           <AiOutlineMinusCircle />
           <p>Nova <br />saída</p>
         </button>
