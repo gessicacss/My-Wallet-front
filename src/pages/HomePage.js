@@ -24,7 +24,7 @@ export default function HomePage() {
         const trans = res.data.reverse();
         setTransactions(trans);
         const totalAmount = trans.reduce((value, t) => {
-          return t.type === "entrada" ? value + t.amount : value - t.amount;
+          return t.type === "entrada" ? value += t.amount : value -= t.amount;
         }, 0);
         setTotal(totalAmount);
       })
@@ -57,7 +57,7 @@ export default function HomePage() {
           <h3>Não há registros de entrada ou saída</h3>
         ) : (
           <>
-            <ul>
+            <List>
               {transactions.map((t, id) => (
                 <ListItemContainer key={id}>
                   <div>
@@ -65,14 +65,14 @@ export default function HomePage() {
                     <strong>{t.description}</strong>
                   </div>
                   <Value color={t.type === "saida" ? "negativo" : "positivo"}>
-                    {t.amount.toFixed(2)}
+                    {t.amount.toFixed(2).replace('.', ',')}
                   </Value>
                 </ListItemContainer>
               ))}
-            </ul>
+            </List>
             <article>
               <strong>Saldo</strong>
-              <Value color={total > 0 ? "positivo" : "negativo"}>{total.toFixed(2)}</Value>
+              <Value color={total > 0 ? "positivo" : "negativo"}>{total.toFixed(2).replace('.', ',')}</Value>
             </article>
           </>
         )}
@@ -135,6 +135,13 @@ const TransactionsContainer = styled.article`
       text-transform: uppercase;
     }
   }
+`;
+
+const List = styled.ul`
+display: flex;
+flex-direction: column;
+max-height:95%;
+overflow-y:scroll;
 `;
 
 const ButtonsContainer = styled.section`
