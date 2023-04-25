@@ -44,7 +44,7 @@ export default function TransactionsPage() {
       <form onSubmit={sendTransaction}>
         <input placeholder="Valor" type="text" required disabled={loading} value={amount} onChange={(e) => setAmount(e.target.value)}/>
         <input placeholder="Descrição" type="text" required disabled={loading} value={description} onChange={(e) => setDescription(e.target.value)}/>
-        <button>Salvar {tipo === 'saida' ? "saída" : "entrada"}</button>
+        <button disabled={loading}>Salvar {tipo === 'saida' ? "saída" : "entrada"}</button>
       </form>
     </TransactionsContainer>
   )
