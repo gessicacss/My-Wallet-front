@@ -199,6 +199,7 @@ const Value = styled.div`
     color:black;
     font-size:10px;
     margin-top:4px;
+    cursor:pointer;
   }
 `;
 const ListItemContainer = styled.li`
