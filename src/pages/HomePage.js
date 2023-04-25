@@ -11,29 +11,33 @@ export default function HomePage() {
   const [transactions, setTransactions] = useState([]);
   const [total, setTotal] = useState(0);
   const navigate = useNavigate();
+  const config = {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  };
 
   useEffect(() => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    };
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/transactions/`, config)
-      .then((res) => {
-        const trans = res.data.reverse();
-        setTransactions(trans);
-        const totalAmount = trans.reduce((value, t) => {
-          return t.type === "entrada" ? value += t.amount : value -= t.amount;
-        }, 0);
-        setTotal(totalAmount);
-      })
-      .catch((err) => {
-        if (err.response) {
-          alert(err.response.data);
-        }
-      });
+    getTransactions();
   }, []);
+
+  function getTransactions(){
+    axios
+    .get(`${process.env.REACT_APP_API_URL}/transactions/`, config)
+    .then((res) => {
+      const trans = res.data.reverse();
+      setTransactions(trans);
+      const totalAmount = trans.reduce((value, t) => {
+        return t.type === "entrada" ? value += t.amount : value -= t.amount;
+      }, 0);
+      setTotal(totalAmount);
+    })
+    .catch((err) => {
+      if (err.response) {
+        alert(err.response.data);
+      }
+    });
+  }
 
   console.log(total);
 
@@ -43,6 +47,24 @@ export default function HomePage() {
     navigate("/");
   }
 
+  function deleteTransaction(tr){
+    const id = tr._id;
+    const confirm = window.confirm(`Deseja deletar a ${tr.type} '${tr.description}'?`);
+    if (!confirm) return;
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/transactions/${id}`, config)
+      .then((res) => {
+        alert(`Transação deletada`);
+        getTransactions();
+      })
+      .catch((err) => {
+        if (err.response) {
+          alert(err.response.data);
+        }
+      });
+  }
+
+  console.log(user.token);
   console.log(transactions);
 
   return (
@@ -66,6 +88,7 @@ export default function HomePage() {
                   </div>
                   <Value color={t.type === "saida" ? "negativo" : "positivo"}>
                     {t.amount.toFixed(2).replace('.', ',')}
+                    <p onClick={() => deleteTransaction(t)}>X</p>
                   </Value>
                 </ListItemContainer>
               ))}
@@ -142,6 +165,9 @@ display: flex;
 flex-direction: column;
 max-height:95%;
 overflow-y:scroll;
+::-webkit-scrollbar {
+    width: 0px;
+}
 `;
 
 const ButtonsContainer = styled.section`
@@ -164,9 +190,16 @@ const ButtonsContainer = styled.section`
   }
 `;
 const Value = styled.div`
+  display:flex;
+  gap:7px;
   font-size: 16px;
   text-align: right;
   color: ${(props) => (props.color === "positivo" ? "green" : "red")};
+  p {
+    color:black;
+    font-size:10px;
+    margin-top:4px;
+  }
 `;
 const ListItemContainer = styled.li`
   display: flex;
