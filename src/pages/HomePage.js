@@ -33,9 +33,8 @@ export default function HomePage() {
       setTotal(totalAmount);
     })
     .catch((err) => {
-      if (err.response) {
+        if (err.response.status === 401) return alert('Faça login');
         alert(err.response.data);
-      }
     });
   }
 

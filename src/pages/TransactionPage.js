@@ -32,7 +32,7 @@ export default function TransactionsPage() {
         navigate("/home");
       })
       .catch((err) => {
-        console.log(err.response)
+        if (err.response.status === 401) return alert('Faça login');
         alert(err.response.data);
       })
       .finally(() => setLoading(false));
