@@ -16,12 +16,12 @@ My Wallet is a financial management tool built with React. It serves as the fron
 
 Clone the Repository: Clone this repository to your local machine.
 ```
-git clone https://github.com/your-username/my-wallet-frontend.git
+git clone https://github.com/gessicacss/My-Wallet-front.git
 ```
 Install Dependencies: Navigate to the project directory and install the required dependencies.
 
 ```
-cd my-wallet-frontend
+cd my-wallet-front
 npm install
 ```
 
