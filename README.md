@@ -18,6 +18,12 @@ Clone the Repository: Clone this repository to your local machine.
 ```
 git clone https://github.com/gessicacss/My-Wallet-front.git
 ```
+
+Clone the backend Repository: [My Wallet API](https://github.com/gessicacss/My-Wallet-back)
+```
+follow the readme instructions on the backEnd repository to use it.
+```
+
 Install Dependencies: Navigate to the project directory and install the required dependencies.
 
 ```
