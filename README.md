@@ -42,7 +42,6 @@ Access the Application: Open your web browser and go to <b>http://localhost:3000
 
 User Authentication: Users can sign up and log in to their accounts securely.
 Transaction Management: Create, view, and manage income and expense transactions.
-Dashboard: Get an overview of your financial transactions with interactive charts and graphs.
 Responsive Design: The application is responsive and works well on both desktop and mobile devices.
 
 ## Contributing
