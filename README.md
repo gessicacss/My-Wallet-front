@@ -27,7 +27,7 @@ npm install
 
 Configuration: Create a .env with the following config:
 ```
-REACT_APP_API_URL
+REACT_APP_API_URL="http://localhost:5000"
 ```
 
 Run the Application: Start the development server to run the React application.
@@ -36,7 +36,7 @@ Run the Application: Start the development server to run the React application.
 npm start
 ```
 
-Access the Application: Open your web browser and go to <b>http://localhost:3000</b> to access the My Wallet App.
+Access the Application: Open your web browser and go to <b>http://localhost:8000</b> to access the My Wallet App.
 
 ## Features
 
