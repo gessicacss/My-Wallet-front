@@ -1,5 +1,12 @@
 # My Wallet (Frontend)
 
+<div align='center'>
+  <img width='35%' src="https://github.com/gessicacss/My-Wallet-front/assets/111399040/a120a608-d2e1-469f-893e-c9f868c769c5" alt='sign-up screen'/>
+  <img width='35%' src="https://github.com/gessicacss/My-Wallet-front/assets/111399040/8edf9a63-c76e-47fb-9be4-a3e700d6290b" alt='sign-in screen'/>
+  <img width='35%' src="https://github.com/gessicacss/My-Wallet-front/assets/111399040/0c8569b1-2625-432f-afbc-072d0b4d78c1" alt='home screen'/>
+  <img width='35%' src="https://github.com/gessicacss/My-Wallet-front/assets/111399040/35c6c033-b387-4a26-ba15-170eef6cc868" alt='create a entry screen'/>
+</div>
+
 ## About
 My Wallet is a financial management tool built with React. It serves as the frontend for managing your income and expenses. This app works seamlessly with the [My Wallet API](https://github.com/gessicacss/My-Wallet-back), allowing users to securely track their financial transactions.
 
